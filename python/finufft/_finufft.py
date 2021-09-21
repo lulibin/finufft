@@ -44,9 +44,9 @@ if platform.system() == 'Windows':
     print(os.environ["PATH"])
     fh = imp.find_module('finufft/finufftc')[0]
     dll_lib_path = os.path.dirname(os.path.realpath(fh.name))+'\\finufft.libs'
+    os.environ["PATH"] += os.path.dirname(os.path.realpath(fh.name))+'\\finufft.libs'
     print(dll_lib_path)
     fh.close()    # Be nice and close the open file handle.
-    os.environ["PATH"] += os.pathsep + dll_lib_path
     print(os.environ["PATH"])
     try:
         lib = ctypes.cdll.LoadLibrary('finufft/finufft.libs/libfinufft.dll')
