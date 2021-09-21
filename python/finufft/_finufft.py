@@ -46,6 +46,8 @@ if platform.system() == 'Windows':
     dll_lib_path = os.path.dirname(os.path.realpath(fh.name))+'\\finufft.libs'
     os.environ["PATH"] += os.path.dirname(os.path.realpath(fh.name))+'\\finufft.libs'
     print(dll_lib_path)
+    arr = os.listdir(dll_lib_path)
+    print(arr)
     fh.close()    # Be nice and close the open file handle.
     print(os.environ["PATH"])
     try:
