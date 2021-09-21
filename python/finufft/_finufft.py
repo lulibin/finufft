@@ -45,8 +45,7 @@ if platform.system() == 'Windows':
     fh = imp.find_module('finufft/finufftc')[0]
     print(os.path.join(os.path.dirname(os.path.realpath(fh.name)),'finufft.libs'))
     os.environ["PATH"] += os.pathsep + os.path.join(os.path.dirname(os.path.realpath(fh.name)),'finufft.libs')
-    print(dll_lib_path)
-    arr = os.listdir(dll_lib_path)
+    arr = os.listdir(os.path.join(os.path.dirname(os.path.realpath(fh.name)),'finufft.libs'))
     print(arr)
     fh.close()    # Be nice and close the open file handle.
     print(os.environ["PATH"])
