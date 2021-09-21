@@ -45,7 +45,7 @@ if platform.system() == 'Windows':
     fh = imp.find_module('finufft/finufftc')[0]
     print(os.path.join(os.path.dirname(os.path.realpath(fh.name)),'finufft.libs'))
     os.environ["PATH"] += os.pathsep + os.path.join(os.path.dirname(os.path.realpath(fh.name)),'finufft.libs')
-    arr = os.listdir(os.path.join(os.path.dirname(os.path.realpath(fh.name)),'finufft.libs'))
+    arr = os.listdir('C:\\hostedtoolcache\\windows\\Python\\3.6.8\\x64\\lib\\site-packages\\finufft.libs')
     print(arr)
     fh.close()    # Be nice and close the open file handle.
     print(os.environ["PATH"])
