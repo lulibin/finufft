@@ -41,6 +41,7 @@ try:
 except OSError:
     pass
 
+os.environ["PATH"] += os.pathsep + '\\ddad\\dd'
 # Should that not work, try to find the full path of a packaged lib.
 #   The packaged lib should have a py/platform decorated name,
 #   and be rpath'ed the true FINUFFT library through the Extension and wheel
