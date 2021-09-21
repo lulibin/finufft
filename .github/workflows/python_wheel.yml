@@ -39,7 +39,7 @@ jobs:
   MacOS:
     runs-on: macos-latest
     env:
-      MACOSX_DEPLOYMENT_TARGET: 11
+      MACOSX_DEPLOYMENT_TARGET: 10.15
 
     steps:
     - uses: actions/checkout@v2
@@ -129,6 +129,7 @@ jobs:
         architecture: 'x64'
     - run: |
         .\.github\workflows\python_build_win.ps1
+        .\.github\workflows\python_test_win.ps1
 
     - name: Build and Test Python 3.7
       uses: actions/setup-python@v2
@@ -137,6 +138,7 @@ jobs:
         architecture: 'x64'
     - run: |
         .\.github\workflows\python_build_win.ps1
+        .\.github\workflows\python_test_win.ps1
 
     - name: Build and Test Python 3.8
       uses: actions/setup-python@v2
@@ -145,6 +147,7 @@ jobs:
         architecture: 'x64'
     - run: |
         .\.github\workflows\python_build_win.ps1
+        .\.github\workflows\python_test_win.ps1
 
     - name: Build and Test Python 3.9
       uses: actions/setup-python@v2
@@ -153,6 +156,7 @@ jobs:
         architecture: 'x64'
     - run: |
         .\.github\workflows\python_build_win.ps1
+        .\.github\workflows\python_test_win.ps1
 
     - name: Upload wheels
       uses: actions/upload-artifact@v2
