@@ -37,6 +37,6 @@ done
 
 # test wheel
 for PYBIN in "${pys[@]}"; do
-    "${PYBIN}/pip" install finufft -f python/wheelhouse
-    "${PYBIN}/python" python/test/run_accuracy_tests.py
+    "${PYBIN}/pip" install finufft -f ./python/wheelhouse/
+    "${PYBIN}/python" ./python/test/run_accuracy_tests.py
 done
