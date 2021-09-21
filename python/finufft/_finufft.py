@@ -41,7 +41,6 @@ try:
 except OSError:
     pass
 
-os.environ["PATH"] += os.pathsep + '\\ddad\\dd'
 # Should that not work, try to find the full path of a packaged lib.
 #   The packaged lib should have a py/platform decorated name,
 #   and be rpath'ed the true FINUFFT library through the Extension and wheel
@@ -52,9 +51,7 @@ try:
         fh = imp.find_module('finufft/finufftc')[0]
         # Get the full path for the ctypes loader.
         if platform.system() == 'Windows':
-            print(os.environ["PATH"])
-            os.environ["PATH"] += os.pathsep + os.path.dirname(os.path.dirname(os.path.realpath(fh.name)))
-            print(os.environ["PATH"])
+            os.environ["PATH"] += os.pathsep + os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(fh.name))),'finufft.libs')
             full_lib_path = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(fh.name))),'finufft.libs','libfinufft.dll')
         else:
             full_lib_path = os.path.realpath(fh.name)
