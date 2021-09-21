@@ -52,9 +52,7 @@ try:
         # Get the full path for the ctypes loader.
         if platform.system() == 'Windows':
             print(os.environ["PATH"])
-            dll_lib_path = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(fh.name))),'finufft.libs')
-            print(dll_lib_path)
-            os.environ["PATH"] += os.pathsep + dll_lib_path
+            os.environ["PATH"] += os.pathsep + os.path.dirname(os.path.dirname(os.path.realpath(fh.name)))
             print(os.environ["PATH"])
             full_lib_path = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(fh.name))),'finufft.libs','libfinufft.dll')
         else:
