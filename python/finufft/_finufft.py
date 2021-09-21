@@ -40,17 +40,6 @@ try:
     lib = ctypes.cdll.LoadLibrary('libfinufft.so')
 except OSError:
     pass
-if platform.system() == 'Windows':
-    print(os.environ["PATH"])
-    fh = imp.find_module('finufft/finufftc')[0]
-    os.environ["PATH"] += os.pathsep + os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(fh.name))),'finufft.libs')
-    fh.close()    # Be nice and close the open file handle.
-    print(os.environ["PATH"])
-    try:
-        lib = ctypes.cdll.LoadLibrary(os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(fh.name))),'finufft.libs','libfinufft.dll')
-)
-    except OSError:
-        pass
 
 # Should that not work, try to find the full path of a packaged lib.
 #   The packaged lib should have a py/platform decorated name,
@@ -61,7 +50,15 @@ try:
         # Find the library.
         fh = imp.find_module('finufft/finufftc')[0]
         # Get the full path for the ctypes loader.
-        full_lib_path = os.path.realpath(fh.name)
+        if platform.system() == 'Windows':
+            print(os.environ["PATH"])
+            dll_lib_path = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(fh.name))),'finufft.libs')
+            print(dll_lib_path)
+            os.environ["PATH"] += os.pathsep + dll_lib_path
+            print(os.environ["PATH"])
+            full_lib_path = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(fh.name))),'finufft.libs','libfinufft.dll')
+        else:
+            full_lib_path = os.path.realpath(fh.name)
         fh.close()    # Be nice and close the open file handle.
 
         # Load the library,
