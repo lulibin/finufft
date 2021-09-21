@@ -43,7 +43,7 @@ except OSError:
 if platform.system() == 'Windows':
     print(os.environ["PATH"])
     fh = imp.find_module('finufft/finufftc')[0]
-    dll_lib_path = os.path_dirname(os.path.realpath(fh.name))+'\\finufft.libs'
+    dll_lib_path = os.path.dirname(os.path.realpath(fh.name))+'\\finufft.libs'
     print(dll_lib_path)
     fh.close()    # Be nice and close the open file handle.
     os.environ["PATH"] += os.pathsep + dll_lib_path
