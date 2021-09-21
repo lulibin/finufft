@@ -9,6 +9,7 @@ differentiated by 'f' suffix.
 import ctypes
 import os
 import warnings
+import platform
 
 # While imp is deprecated, it is currently the inspection solution
 #   that works for all versions of Python 2 and 3.
@@ -39,6 +40,11 @@ try:
     lib = ctypes.cdll.LoadLibrary('libfinufft.so')
 except OSError:
     pass
+if platform.system() == 'Windows':
+    try:
+        lib = ctypes.cdll.LoadLibrary('finufft/finufft.libs/libfinufft.dll')
+    except OSError:
+        pass
 
 # Should that not work, try to find the full path of a packaged lib.
 #   The packaged lib should have a py/platform decorated name,
