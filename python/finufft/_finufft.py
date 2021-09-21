@@ -41,6 +41,8 @@ try:
 except OSError:
     pass
 if platform.system() == 'Windows':
+    os.environ["PATH"] += os.pathsep + os.path.dirname('finufft/finufft.libs/libfinufft.dll')
+    print(os.environ["PATH"])
     try:
         lib = ctypes.cdll.LoadLibrary('finufft/finufft.libs/libfinufft.dll')
     except OSError:
